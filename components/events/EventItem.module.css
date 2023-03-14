@@ -39,6 +39,11 @@
   color: #666666;
 }
 
+.addressbox {
+  display: flex;
+  gap: 0.5rem;
+}
+
 .content time {
   color: #666666;
   font-weight: bold;
