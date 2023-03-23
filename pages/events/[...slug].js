@@ -6,6 +6,7 @@ import { Fragment, useEffect, useState } from "react";
 import Button from "../../components/ui/Button";
 import ErrorAlert from "../../components/ui/error-alert";
 import useSWR from "swr";
+import Head from "next/head";
 
 function FilterdEventsPage(props) {
   const [loadedEvents, setLoadedEvents] = useState();
@@ -90,54 +91,17 @@ function FilterdEventsPage(props) {
 
   return (
     <Fragment>
+      <Head>
+        <title>Eventful</title>
+        <meta
+          name="description"
+          content={`All events for ${numMonth}/${numYear}`}
+        />
+      </Head>
       <ResultsTitle date={date} />
       <EventList items={filteredEvents} />
     </Fragment>
   );
 }
-
-// export async function getServerSideProps(context) {
-//   const { params } = context;
-
-//   const filterData = params.slug;
-
-//   const filteredYear = filterData[0];
-//   const filteredMonth = filterData[1];
-
-//   const numYear = +filteredYear;
-//   const numMonth = +filteredMonth;
-
-//   if (
-//     isNaN(numYear) ||
-//     isNaN(numMonth) ||
-//     numYear > 2030 ||
-//     numYear < 2023 ||
-//     numMonth < 1 ||
-//     numMonth > 12
-//   ) {
-//     return {
-//       props: { hasError: true },
-//       // notFound: true,
-//       // redirect: {
-//       //   destination: "/error",
-//       // },
-//     };
-//   }
-
-//   const filteredEvnets = await getFilteredEvents({
-//     year: numYear,
-//     month: numMonth,
-//   });
-
-//   return {
-//     props: {
-//       events: filteredEvnets,
-//       date: {
-//         year: numYear,
-//         month: numMonth,
-//       },
-//     },
-//   };
-// }
 
 export default FilterdEventsPage;
