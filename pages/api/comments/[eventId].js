@@ -39,7 +39,7 @@ function handler(req, res) {
       },
     ];
 
-    res.status(200).json({ message: dummyList });
+    res.status(200).json({ comments: dummyList });
   }
 }
 
