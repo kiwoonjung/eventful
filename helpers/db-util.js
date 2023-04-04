@@ -2,7 +2,7 @@ import { MongoClient } from "mongodb";
 
 export async function connectDatabase() {
   const client = await MongoClient.connect(
-    "mongodb+srv://eventful:IDpPHmouG1reyW52@circlemarket-server.lmw8s6t.mongodb.net/eventful?retryWrites=true&w=majority"
+    `mongodb+srv://${process.env.REACT_APP_DB_USER}:${process.env.REACT_APP_DB_PASSWORD}@circlemarket-server.lmw8s6t.mongodb.net/eventful?retryWrites=true&w=majority`
   );
 
   return client;
